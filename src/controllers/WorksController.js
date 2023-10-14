@@ -68,9 +68,38 @@ exports.selectWorksByID=async (req,res)=>{
 exports.deleteWork=async (req,res)=>{
     let email = req.headers['email'];
     let id = req.body['id'];
-    console.log(id);
     try{
         const result = await WorksModel.deleteOne({_id:id,email:email});
+        if(result){
+            res.status(200).json({status:"success",data:result});
+        }
+        else{
+            res.status(400).json({status:"success",data:"Something went wrong"});
+        }
+    }catch (e) {
+        res.status(400).json({status:"success",data:e.toString()});
+    }
+}
+
+//update a specific work by the authorized user
+exports.updateWork=async (req,res)=>{
+    let email = req.headers['email'];
+    let id = req.body['id'];
+    let title = req.body['title'];
+    let classNote=req.body['classNote'];
+    let description =req.body['description'];
+    let status = req.body['status'];
+    let UpdatedAt = Date.now();
+    const postBody={
+        title:title,
+        classNote:classNote,
+        description:description,
+        status:status,
+        updatedAt:UpdatedAt
+    };
+    console.log(postBody);
+    try{
+        const result = await WorksModel.updateOne({_id:id,email:email},postBody);
         if(result){
             res.status(200).json({status:"success",data:result});
         }

@@ -5,6 +5,6 @@ const DataSchema = mongoose.Schema({
     description:{type:String},
     status:{type:String},
     email:{type:String},
-},{versionKey:false});
+},{timestamps:true,versionKey:false});
 const WorksModel = mongoose.model('works',DataSchema);
 module.exports = WorksModel;

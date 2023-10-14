@@ -1,5 +1,7 @@
 const StudentsModel = require('../models/StudentsModel');
 const jwt = require('jsonwebtoken');
+
+//Create a new student
 exports.createStudent =async (req,res)=>{
     let reqBody = req.body;
     try{
@@ -14,7 +16,7 @@ exports.createStudent =async (req,res)=>{
             res.status(400).json({status:"fail",data:e.toString()});
     }
 }
-
+// Select a Student by ID
 exports.selectStudentByID = async (req,res)=>{
     let id = req.params.id;
     try{
@@ -29,7 +31,7 @@ exports.selectStudentByID = async (req,res)=>{
            res.status(400).json({status:"fail",data:e.toString()});
     }
 }
-
+//Select All Students
 exports.selectAllStudent = async (req,res)=>{
     try{
         let result = await StudentsModel.find({});
@@ -43,7 +45,7 @@ exports.selectAllStudent = async (req,res)=>{
         res.status(400).json({status:"fail",data:e.toString()});
     }
 }
-
+//Delete a specific student
 exports.deleteStudent= async (req,res)=>{
   let id = req.body['id'];
   try{
@@ -57,7 +59,7 @@ exports.deleteStudent= async (req,res)=>{
       res.status(400).json({status:"fail",data:e.toString()});
   }
 }
-
+//Update a specific student
 exports.updateStudent = async (req,res)=>{
     let id = req.params.id;
     let reqBody=req.body;
@@ -73,7 +75,7 @@ exports.updateStudent = async (req,res)=>{
             res.status(400).json({status:"fail",data:e.toString()});
     }
 }
-
+//User login by creating jwt token 
 exports.UserLogin = async (req,res)=>{
     let email = req.body['email'];
     let password = req.body['password'];

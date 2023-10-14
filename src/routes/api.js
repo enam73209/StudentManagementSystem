@@ -15,6 +15,7 @@ router.post('/createWork',AuthVerifyMiddleware,WorksController.createWork);
 router.get('/selectAllWorks',AuthVerifyMiddleware,WorksController.selectAllWorks);
 router.get('/selectWorksByID/:id',AuthVerifyMiddleware,WorksController.selectWorksByID);
 router.post('/deleteWork',AuthVerifyMiddleware,WorksController.deleteWork);
+router.post('/updateWork',AuthVerifyMiddleware,WorksController.updateWork);
 
 
 
