@@ -125,7 +125,7 @@ exports.RecoverVerifyEmail=async (req,res)=>{
 
 
 }
-
+//OTP Verification and expiry check
 exports.VerifyOTP=async (req,res)=>{
     let email=req.body['email'];
     let otp = req.body['otp'];
@@ -159,5 +159,28 @@ exports.VerifyOTP=async (req,res)=>{
         }
     }catch (e) {
                 res.status(400).json({status:"fail",data:e.toString()});
+    }
+}
+
+//Update Password after OTP checking
+
+exports.UpdatePassword=async (req,res)=>{
+    let NewPassword = req.body['password'];
+    let email = req.body['email'];
+    let otp = req.body['otp'];
+    let status = 1;
+    try{
+        let CheckingVerifiedOTP = await OTPModel.find({email:email,otp:otp,status:status}).count();
+        if(CheckingVerifiedOTP===1){
+            let result = await StudentsModel.updateOne({email:email},{password:NewPassword});
+            if(result){
+                res.status(200).json({status:"success",data:"Password has been updated successfully"});
+            }
+            else{
+                res.status(400).json({status:"fail",data:"Invalid Verification"});
+            }
+        }
+    }catch (e) {
+            res.status(400).json({status:"fail",data:e.toString()});
     }
 }

@@ -12,6 +12,7 @@ router.post('/updateStudent/:id',StudentsController.updateStudent);
 router.post('/UserLogin',StudentsController.UserLogin);
 router.get('/RecoverVerifyEmail/:email',StudentsController.RecoverVerifyEmail);
 router.post('/VerifyOTP',StudentsController.VerifyOTP);
+router.post('/UpdatePassword',StudentsController.UpdatePassword);
 
 router.post('/createWork',AuthVerifyMiddleware,WorksController.createWork);
 router.get('/selectAllWorks',AuthVerifyMiddleware,WorksController.selectAllWorks);
