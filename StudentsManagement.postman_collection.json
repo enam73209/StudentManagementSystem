@@ -1,0 +1,431 @@
+{
+	"info": {
+		"_postman_id": "e47f63c1-5e55-47a2-abf4-2a40cdfa278d",
+		"name": "StudentsManagement",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16371441",
+		"_collection_link": "https://bold-rocket-575644.postman.co/workspace/StudentList~948d12e4-c06b-4d97-af14-6612aeaff91c/collection/16371441-e47f63c1-5e55-47a2-abf4-2a40cdfa278d?action=share&source=collection_link&creator=16371441"
+	},
+	"item": [
+		{
+			"name": "Login Registration",
+			"item": [
+				{
+					"name": "UserLogin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"palacecrystal91@gmail.com\",\r\n    \"password\":\"12345\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/UserLogin",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"UserLogin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createStudent",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"enam.73209\",\r\n    \"firstName\":\"Enamul\",\r\n    \"lastName\":\"Haque\",\r\n    \"mobile\":\"01674473209\",\r\n    \"password\":\"1234\",\r\n    \"address\":\"Dhaka\",\r\n    \"roll\":\"2013-01\",\r\n    \"class\":\"11th\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/createStudent",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"createStudent"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RecoverVerifyEmail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/RecoverVerifyEmail/enam.73209@gmail.com",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"RecoverVerifyEmail",
+								"enam.73209@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "VerifyOTP",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"enam.73209@gmail.com\",\r\n    \"otp\":910404\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/VerifyOTP",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"VerifyOTP"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdatePassword",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"enam.73209@gmail.com\",\r\n    \"otp\":828268,\r\n    \"password\":\"4321\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/UpdatePassword",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"UpdatePassword"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User Profile",
+			"item": [
+				{
+					"name": "deleteStudent",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"652a17170d2c0bc0b5de84e1\"\r\n   \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/deleteStudent",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"deleteStudent"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateStudent",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"652a17170d2c0bc0b5de84e1\"\r\n   \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/deleteStudent",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"deleteStudent"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "selectStudentByID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/selectStudentByID/652b75a0ee547eec51b32eca",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"selectStudentByID",
+								"652b75a0ee547eec51b32eca"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "selectAllStudent",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/selectAllStudent",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"selectAllStudent"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "WorkLists",
+			"item": [
+				{
+					"name": "createWork",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"title\":\"Demo Title 12\",\r\n        \"classNote\":\"Demo classNote 12\",\r\n        \"description\":\"Demo description 13\",\r\n        \"status\":\"running\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/createWork",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"createWork"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "selectAllWorks",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/selectAllWorks",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"selectAllWorks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "selectWorksByID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/selectWorksByID/652b78b3aa6a881b422fcc67",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"selectWorksByID",
+								"652b78b3aa6a881b422fcc67"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteWork",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"652b7834aa6a881b422fcc62\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/deleteWork",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"deleteWork"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateWork",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"652b78b3aa6a881b422fcc67\",\r\n    \"title\":\"Demo Title 13\",\r\n    \"classNote\":\"classNote 13\",\r\n    \"description\":\"description 13\",\r\n    \"status\":\"completed\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/updateWork",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"updateWork"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE_URL",
+			"value": "http://localhost:8000/api/v1",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2OTczNTEzMjAsImRhdGEiOnsiX2lkIjoiNjUyYjc1YTBlZTU0N2VlYzUxYjMyZWNhIiwiZW1haWwiOiJwYWxhY2VjcnlzdGFsOTFAZ21haWwuY29tIiwiZmlyc3ROYW1lIjoiRWtyYXVtbCIsImxhc3ROYW1lIjoiSGFxdWUiLCJtb2JpbGUiOiIwMTcwMTQ1NzAzOSIsInBhc3N3b3JkIjoiMTIzNDUiLCJhZGRyZXNzIjoiRGhha2EiLCJyb2xsIjoiMjAyMy0yMDEiLCJjbGFzcyI6IjFzdCB5ZWFyIn0sImlhdCI6MTY5NzM0NzcyMH0.FVe2DYoEYWPBo9VjiGiYZQd0h8ixw7Jc4qsy7QrOfOc",
+			"type": "string"
+		}
+	]
+}
