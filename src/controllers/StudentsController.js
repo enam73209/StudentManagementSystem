@@ -1,4 +1,6 @@
 const StudentsModel = require('../models/StudentsModel');
+const OTPModel = require('../models/OTPModel');
+const SendEmailUtility = require('../utility/SendEmailUtility');
 const jwt = require('jsonwebtoken');
 
 //Create a new student
@@ -75,7 +77,7 @@ exports.updateStudent = async (req,res)=>{
             res.status(400).json({status:"fail",data:e.toString()});
     }
 }
-//User login by creating jwt token 
+//User login by creating jwt token
 exports.UserLogin = async (req,res)=>{
     let email = req.body['email'];
     let password = req.body['password'];
@@ -97,4 +99,65 @@ exports.UserLogin = async (req,res)=>{
             res.status(401).json({status:"fail",data:"Unauthorized"})
     }
 
+}
+
+//Verify Email address and sending OTP
+exports.RecoverVerifyEmail=async (req,res)=>{
+    let email = req.params.email;
+    let OTPCode =Math.floor(100000 + Math.random() * 900000);
+    let EmailText="Your Verification Code is ="+OTPCode
+    let EmailSubject="Student Management  verification code"
+    try {
+        let result =await StudentsModel.find({email:email}).count();
+        if(result===1){
+            //Sending Verification code
+            await SendEmailUtility(email,EmailText,EmailSubject);
+            //Storing OTP in OTP collection
+            await OTPModel.create({email:email,otp:OTPCode});
+            res.status(200).json({status:"success",data:"6 digit verification code has been sent to your email account"});
+        }
+        else{
+            res.status(400).json({status:"fail",data:"No User Found"});
+        }
+    }catch (e) {
+            res.status(400).json({status:"fail",data:e.toString()});
+    }
+
+
+}
+
+exports.VerifyOTP=async (req,res)=>{
+    let email=req.body['email'];
+    let otp = req.body['otp'];
+    let status=0;
+    let UpdateStatus = 1;
+    try{
+        let result=await OTPModel.find({email:email,otp:otp,status:status});
+        console.log(result);
+
+
+        if(result.length===1){
+            //Checking OTP expiry time 5 min
+
+            let currentTime =new Date();
+            let OTPCreatedAt = result[0].createdAt;
+            let TimeDifferenceMS= currentTime - OTPCreatedAt;
+            let OTPExpiryTimeMS =5 * 60 * 1000; //5 min
+            if(TimeDifferenceMS<=OTPExpiryTimeMS){
+                let UpdatedResult= await OTPModel.updateOne({email:email,otp:otp,status:status},{status:UpdateStatus});
+                if(UpdatedResult){
+                    res.status(200).json({status:"success",data:"verification successfully completed"});
+                }
+                else{
+                    res.status(400).json({status:"fail",data:"verification failed"});
+                }
+            }
+            else{
+                res.status(400).json({status:"fail",data:"OTP Has been expired"});
+            }
+
+        }
+    }catch (e) {
+                res.status(400).json({status:"fail",data:e.toString()});
+    }
 }
