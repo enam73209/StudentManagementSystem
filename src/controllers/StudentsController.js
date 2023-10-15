@@ -21,6 +21,7 @@ exports.createStudent =async (req,res)=>{
 // Select a Student by ID
 exports.selectStudentByID = async (req,res)=>{
     let id = req.params.id;
+    console.log(id);
     try{
         const result = await StudentsModel.find({_id:id});
         if(result){
@@ -133,9 +134,6 @@ exports.VerifyOTP=async (req,res)=>{
     let UpdateStatus = 1;
     try{
         let result=await OTPModel.find({email:email,otp:otp,status:status});
-        console.log(result);
-
-
         if(result.length===1){
             //Checking OTP expiry time 5 min
 
